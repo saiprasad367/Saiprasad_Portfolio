@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowUpRight, Github } from "lucide-react";
+import { ArrowUpRight, Code2 } from "lucide-react";
 import { SectionLabel } from "./About";
 
 const projects = [
@@ -92,7 +92,7 @@ export function Projects() {
                 ))}
               </div>
               <div className="mt-6 flex items-center gap-3 text-xs">
-                <a href="#" className="inline-flex items-center gap-1 hover:underline"><Github size={13} /> Code</a>
+                <a href="#" className="inline-flex items-center gap-1 hover:underline"><Code2 size={13} /> Code</a>
                 <span className="text-border">·</span>
                 <a href="#" className="inline-flex items-center gap-1 hover:underline">Live demo <ArrowUpRight size={12} /></a>
               </div>
