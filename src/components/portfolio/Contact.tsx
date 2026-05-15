@@ -1,0 +1,120 @@
+import { motion } from "framer-motion";
+import { useState } from "react";
+import { ArrowUpRight, Mail, MapPin, Send } from "lucide-react";
+import { SectionLabel } from "./About";
+
+const socials = [
+  { label: "Email", handle: "saiprasad367@gmail.com", href: "mailto:saiprasad367@gmail.com" },
+  { label: "LinkedIn", handle: "linkedin.com/in/saiprasad2523", href: "https://linkedin.com/in/saiprasad2523" },
+  { label: "GitHub", handle: "github.com/saiprasad367", href: "https://github.com/saiprasad367" },
+  { label: "LeetCode", handle: "leetcode.com/saiprasad367", href: "https://leetcode.com/saiprasad367" },
+];
+
+function Field({ label, type = "text", textarea = false }: { label: string; type?: string; textarea?: boolean }) {
+  const [focused, setFocused] = useState(false);
+  const [val, setVal] = useState("");
+  const float = focused || val.length > 0;
+  const common =
+    "w-full bg-transparent border-b border-border focus:border-foreground outline-none pt-6 pb-2 text-foreground transition-colors";
+  return (
+    <label className="relative block">
+      <span
+        className={`absolute left-0 transition-all pointer-events-none font-secondary ${
+          float ? "top-0 text-[11px] text-muted-foreground" : "top-5 text-sm text-muted-foreground"
+        }`}
+      >
+        {label}
+      </span>
+      {textarea ? (
+        <textarea
+          rows={4}
+          className={common + " resize-none"}
+          value={val}
+          onChange={(e) => setVal(e.target.value)}
+          onFocus={() => setFocused(true)}
+          onBlur={() => setFocused(false)}
+        />
+      ) : (
+        <input
+          type={type}
+          className={common}
+          value={val}
+          onChange={(e) => setVal(e.target.value)}
+          onFocus={() => setFocused(true)}
+          onBlur={() => setFocused(false)}
+        />
+      )}
+    </label>
+  );
+}
+
+export function Contact() {
+  const [sent, setSent] = useState(false);
+  return (
+    <section id="contact" className="relative py-32 px-6 overflow-hidden">
+      <div className="absolute inset-0 mesh-bg opacity-50" />
+      <div className="relative max-w-6xl mx-auto">
+        <SectionLabel>08 — Contact</SectionLabel>
+        <h2 className="font-display text-4xl sm:text-6xl tracking-[-0.03em] leading-[1.05] max-w-3xl text-balance">
+          Let's build something meaningful.
+        </h2>
+        <p className="mt-6 max-w-xl text-muted-foreground">
+          Open to Software Engineering, GenAI Engineering, and Full-Stack opportunities — on-site, hybrid, or remote.
+        </p>
+        <div className="grid lg:grid-cols-12 gap-6 mt-16">
+          <div className="lg:col-span-7">
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                setSent(true);
+                setTimeout(() => setSent(false), 4000);
+              }}
+              className="glass-strong rounded-3xl p-7 sm:p-10 space-y-5"
+            >
+              <div className="grid sm:grid-cols-2 gap-5">
+                <Field label="Your name" />
+                <Field label="Email" type="email" />
+              </div>
+              <Field label="Subject" />
+              <Field label="Message" textarea />
+              <button
+                type="submit"
+                className="group inline-flex items-center gap-2 bg-foreground text-background px-6 py-3.5 rounded-full text-sm font-medium hover:scale-[1.02] transition-transform"
+              >
+                {sent ? "Message sent ✓" : (<>Send message <Send size={14} className="group-hover:translate-x-0.5 transition-transform" /></>)}
+              </button>
+            </form>
+          </div>
+          <div className="lg:col-span-5 space-y-3">
+            {socials.map((s, i) => (
+              <motion.a
+                key={s.label}
+                href={s.href}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.06 }}
+                whileHover={{ x: 4 }}
+                className="group glass rounded-2xl p-5 flex items-center justify-between"
+              >
+                <div>
+                  <div className="text-xs font-mono text-muted-foreground">{s.label}</div>
+                  <div className="font-secondary text-sm mt-1">{s.handle}</div>
+                </div>
+                <ArrowUpRight size={18} className="group-hover:rotate-45 transition-transform" />
+              </motion.a>
+            ))}
+            <div className="glass rounded-2xl p-5 flex items-center gap-3 text-sm">
+              <MapPin size={16} className="text-muted-foreground" />
+              Greater Hyderabad Area, India
+            </div>
+            <div className="glass rounded-2xl p-5 flex items-center gap-3 text-sm">
+              <Mail size={16} className="text-muted-foreground" />
+              Available · On-site, Hybrid, Remote
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
