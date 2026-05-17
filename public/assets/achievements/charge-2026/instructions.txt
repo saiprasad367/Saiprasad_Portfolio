@@ -1,0 +1,2 @@
+Drop your images/screenshots for the CHARGE 2026 Hackathon achievement into this folder.
+For example, you can drop the AI Dashboard UI screenshot here and reference it in the achievements.ts data file.

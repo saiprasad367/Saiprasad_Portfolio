@@ -1,0 +1,5 @@
+Please place your certification images in this folder.
+Name the images exactly as defined in the `imageName` property of your certification entries in `src/data/certifications.ts`.
+
+For example, for the Salesforce Agentforce Specialist certification, add:
+- salesforce-agentforce-specialist.jpg

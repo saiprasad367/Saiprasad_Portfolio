@@ -72,14 +72,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "SaiPrasad Chindam | Portfolio" },
+      { name: "description", content: "Software Engineer focused on cloud-native AI systems, GenAI workflows, and full-stack engineering." },
+      { name: "author", content: "SaiPrasad Chindam" },
+      { property: "og:title", content: "SaiPrasad Chindam | Portfolio" },
+      { property: "og:description", content: "Software Engineer focused on cloud-native AI systems." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:site", content: "@saiprasad" },
     ],
     links: [
       {

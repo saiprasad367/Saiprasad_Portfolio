@@ -11,10 +11,11 @@ const focuses = [
 ];
 
 const stats = [
-  { n: "15+", l: "Projects Built" },
+  { n: "10+", l: "Projects Built" },
   { n: "10+", l: "Hackathons" },
   { n: "30+", l: "Technologies" },
-  { n: "500+", l: "Problems Solved" },
+  // 💡 Update this number whenever you solve more LeetCode problems!
+  { n: "300+", l: "LeetCode Problems" },
 ];
 
 export function About() {

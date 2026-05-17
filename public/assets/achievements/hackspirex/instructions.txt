@@ -1,0 +1,5 @@
+Please place the following images in this folder to be displayed on the HackspireX 2025 achievement page:
+- team.jpg (For the main team photo section)
+- dashboard.jpg (For the My Contribution section)
+- solo.jpg (For the Solo Prize Photo section)
+- certificate.jpg (For the Certificate section)

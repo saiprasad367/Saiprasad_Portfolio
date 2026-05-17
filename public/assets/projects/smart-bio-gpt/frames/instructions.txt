@@ -1,0 +1,7 @@
+Drop your frame sequence images for SmartBioGPT here.
+Example naming:
+frame_001.jpg
+frame_002.jpg
+frame_003.jpg
+
+Once added, update src/data/projects.ts with these file paths.

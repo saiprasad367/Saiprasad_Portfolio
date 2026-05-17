@@ -10,33 +10,89 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ProjectsSlugRouteImport } from './routes/projects/$slug'
+import { Route as ExperienceSlugRouteImport } from './routes/experience/$slug'
+import { Route as CertificationsSlugRouteImport } from './routes/certifications/$slug'
+import { Route as AchievementsSlugRouteImport } from './routes/achievements/$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProjectsSlugRoute = ProjectsSlugRouteImport.update({
+  id: '/projects/$slug',
+  path: '/projects/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ExperienceSlugRoute = ExperienceSlugRouteImport.update({
+  id: '/experience/$slug',
+  path: '/experience/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CertificationsSlugRoute = CertificationsSlugRouteImport.update({
+  id: '/certifications/$slug',
+  path: '/certifications/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AchievementsSlugRoute = AchievementsSlugRouteImport.update({
+  id: '/achievements/$slug',
+  path: '/achievements/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/achievements/$slug': typeof AchievementsSlugRoute
+  '/certifications/$slug': typeof CertificationsSlugRoute
+  '/experience/$slug': typeof ExperienceSlugRoute
+  '/projects/$slug': typeof ProjectsSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/achievements/$slug': typeof AchievementsSlugRoute
+  '/certifications/$slug': typeof CertificationsSlugRoute
+  '/experience/$slug': typeof ExperienceSlugRoute
+  '/projects/$slug': typeof ProjectsSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/achievements/$slug': typeof AchievementsSlugRoute
+  '/certifications/$slug': typeof CertificationsSlugRoute
+  '/experience/$slug': typeof ExperienceSlugRoute
+  '/projects/$slug': typeof ProjectsSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/achievements/$slug'
+    | '/certifications/$slug'
+    | '/experience/$slug'
+    | '/projects/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/achievements/$slug'
+    | '/certifications/$slug'
+    | '/experience/$slug'
+    | '/projects/$slug'
+  id:
+    | '__root__'
+    | '/'
+    | '/achievements/$slug'
+    | '/certifications/$slug'
+    | '/experience/$slug'
+    | '/projects/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AchievementsSlugRoute: typeof AchievementsSlugRoute
+  CertificationsSlugRoute: typeof CertificationsSlugRoute
+  ExperienceSlugRoute: typeof ExperienceSlugRoute
+  ProjectsSlugRoute: typeof ProjectsSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,12 +104,54 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/projects/$slug': {
+      id: '/projects/$slug'
+      path: '/projects/$slug'
+      fullPath: '/projects/$slug'
+      preLoaderRoute: typeof ProjectsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/experience/$slug': {
+      id: '/experience/$slug'
+      path: '/experience/$slug'
+      fullPath: '/experience/$slug'
+      preLoaderRoute: typeof ExperienceSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/certifications/$slug': {
+      id: '/certifications/$slug'
+      path: '/certifications/$slug'
+      fullPath: '/certifications/$slug'
+      preLoaderRoute: typeof CertificationsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/achievements/$slug': {
+      id: '/achievements/$slug'
+      path: '/achievements/$slug'
+      fullPath: '/achievements/$slug'
+      preLoaderRoute: typeof AchievementsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AchievementsSlugRoute: AchievementsSlugRoute,
+  CertificationsSlugRoute: CertificationsSlugRoute,
+  ExperienceSlugRoute: ExperienceSlugRoute,
+  ProjectsSlugRoute: ProjectsSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

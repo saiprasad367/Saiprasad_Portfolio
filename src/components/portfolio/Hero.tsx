@@ -38,9 +38,9 @@ export function Hero() {
       <div className="absolute -top-32 -left-32 w-[500px] h-[500px] rounded-full bg-glow-blue blur-3xl opacity-50 animate-pulse-glow" />
       <div className="absolute top-1/3 -right-32 w-[500px] h-[500px] rounded-full bg-glow-violet blur-3xl opacity-50 animate-pulse-glow" style={{ animationDelay: "2s" }} />
 
-      <div className="relative max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-12 items-center">
-        {/* LEFT */}
-        <div className="lg:col-span-7">
+      <div className="relative max-w-7xl mx-auto px-6 flex flex-col items-center justify-center text-center">
+        {/* Text content */}
+        <div className="w-full max-w-4xl flex flex-col items-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -101,7 +101,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.7, duration: 0.6 }}
-            className="mt-10 flex flex-wrap gap-3"
+            className="mt-10 flex flex-wrap justify-center gap-3"
           >
             <a
               href="#projects"
@@ -111,7 +111,9 @@ export function Hero() {
               <ArrowDown size={16} className="group-hover:translate-y-0.5 transition-transform" />
             </a>
             <a
-              href="#"
+              href="https://drive.google.com/uc?export=download&id=1jKMHA5k1S_69wqRCZOuaRq9DIDUjqPCr"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 glass-strong px-6 py-3.5 rounded-full text-sm font-medium hover:scale-[1.02] transition-transform"
             >
               <Download size={16} />
@@ -126,79 +128,7 @@ export function Hero() {
             </a>
           </motion.div>
         </div>
-
-        {/* RIGHT — Tech orbit */}
-        <div className="lg:col-span-5 relative h-[420px] sm:h-[520px]">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.6 }}
-            className="absolute inset-0 grid place-items-center"
-          >
-            {/* Orbit rings */}
-            {[1, 2, 3].map((i) => (
-              <div
-                key={i}
-                className="absolute rounded-full border border-border"
-                style={{ width: `${i * 130}px`, height: `${i * 130}px` }}
-              />
-            ))}
-
-            {/* Center card */}
-            <motion.div
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-              className="relative w-44 h-56 glass-strong rounded-3xl p-5 flex flex-col justify-between z-10"
-            >
-              <div>
-                <div className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">// engineer.card</div>
-                <div className="mt-2 font-display text-lg font-semibold">SC</div>
-              </div>
-              <div>
-                <div className="text-[10px] font-mono text-muted-foreground">SYS_STATUS</div>
-                <div className="flex items-center gap-1.5 mt-1">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                  <span className="text-[11px] font-mono">deployed</span>
-                </div>
-              </div>
-              <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-glow-blue/40 via-transparent to-glow-violet/40 -z-10" />
-            </motion.div>
-
-            {/* Orbiting tech */}
-            <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-              className="absolute w-[390px] h-[390px]"
-            >
-              {orbitTech.map((t) => {
-                const rad = (t.angle * Math.PI) / 180;
-                const x = Math.cos(rad) * 195;
-                const y = Math.sin(rad) * 195;
-                return (
-                  <motion.div
-                    key={t.label}
-                    animate={{ rotate: -360 }}
-                    transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-                    style={{
-                      position: "absolute",
-                      left: "50%",
-                      top: "50%",
-                      transform: `translate(${x}px, ${y}px) translate(-50%, -50%)`,
-                    }}
-                  >
-                    <div className="glass px-3 py-1.5 rounded-full text-[11px] font-mono whitespace-nowrap">
-                      {t.label}
-                    </div>
-                  </motion.div>
-                );
-              })}
-            </motion.div>
-          </motion.div>
-        </div>
       </div>
-
-      {/* Terminal */}
-      <Terminal />
     </section>
   );
 }

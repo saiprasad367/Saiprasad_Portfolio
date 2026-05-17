@@ -1,0 +1,5 @@
+Please place the following media files in this folder to be displayed on the Deutsche Börse Cybersecurity achievement page:
+- team.jpg (For the main Team Photo section)
+- certificate.jpg (For the Certificate section at the end)
+
+Note: This achievement does not use a 'dashboard.jpg' or a video, as the layout has been updated to be flexible!

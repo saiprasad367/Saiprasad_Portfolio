@@ -1,0 +1,6 @@
+Drop your standard image screenshots for SiliconMind here.
+Example naming:
+1.jpg
+2.jpg
+
+Once added, update src/data/projects.ts with these file paths.

@@ -1,37 +1,8 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 import { SectionLabel } from "./About";
-
-const experiences = [
-  {
-    company: "Microsoft × AICTE × Edunet",
-    role: "AI Intern",
-    period: "May 2025 — Jun 2025",
-    desc: "Worked across Azure AI services, ML fundamentals, GenAI, prompt engineering, and Custom Vision in an intensive virtual program.",
-    tags: ["Azure", "GenAI", "Deep Learning", "Custom Vision"],
-  },
-  {
-    company: "CodTech IT Solutions",
-    role: "Full-Stack Developer Intern",
-    period: "2024",
-    desc: "Built end-to-end web modules using React, Node, and MongoDB. Owned features from API design to UI delivery.",
-    tags: ["React", "Node.js", "MongoDB", "REST"],
-  },
-  {
-    company: "CodSoft",
-    role: "Web Development Intern",
-    period: "2024",
-    desc: "Shipped responsive web interfaces and interactive landing experiences with modern HTML, CSS, and JavaScript.",
-    tags: ["JavaScript", "CSS", "UI"],
-  },
-  {
-    company: "Prodigy InfoTech",
-    role: "Cyber Security Intern",
-    period: "2023",
-    desc: "Explored offensive and defensive security fundamentals — network analysis, secure coding patterns, and threat modeling.",
-    tags: ["Security", "Networking", "Linux"],
-  },
-];
+import { experiences } from "@/data/experience";
 
 export function Experience() {
   return (
@@ -73,9 +44,13 @@ export function Experience() {
                         </span>
                       ))}
                     </div>
-                    <button className="mt-5 inline-flex items-center gap-1 text-xs font-medium hover:gap-2 transition-all">
+                    <Link
+                      to={`/experience/$slug`}
+                      params={{ slug: e.slug }}
+                      className="mt-5 inline-flex items-center gap-1 text-xs font-medium hover:gap-2 transition-all"
+                    >
                       Read more <ArrowUpRight size={14} />
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </motion.div>

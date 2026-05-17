@@ -1,0 +1,6 @@
+Please place the following media files in this folder to be displayed on the Ingenium 2026 achievement page:
+- prototype.jpg (For the main Prototype Development section)
+- demo.mp4 (For the Autonomous Robot Demonstration video section)
+- certificate.jpg (For the Certificate section at the end)
+
+Note: If you have additional images (e.g., for the 'My Contribution' section), you can add them and update the code accordingly.
