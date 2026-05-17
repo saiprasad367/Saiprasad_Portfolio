@@ -72,14 +72,27 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "SaiPrasad Chindam | Portfolio" },
-      { name: "description", content: "Software Engineer focused on cloud-native AI systems, GenAI workflows, and full-stack engineering." },
+      { title: "SaiPrasad Chindam — Software Engineer · GenAI · Cloud-Native" },
+      { 
+        name: "description", 
+        content: "Official Portfolio of SaiPrasad Chindam — Software Engineer specializing in GenAI systems, cloud-native architectures (Azure), AI orchestration, and full-stack development. B.Tech CSE AI & ML student at CMR College of Engineering & Technology, Hyderabad." 
+      },
+      { 
+        name: "keywords", 
+        content: "SaiPrasad Chindam, SaiPrasad, saiprasad367, saiprasad2523, Software Engineer Hyderabad, GenAI Engineer, Cloud-Native Architect, AI Intern Microsoft Edunet, CodTech IT Solutions, CMR College of Engineering & Technology, CMRCET AI ML, B.Tech CSE AI & ML, FPGA Intelligence SiliconMind, SmartBioGPT, EduBridge AI, Shortify SaaS, Hackathon Winner CHARGE 2026, HackspireX, Deutsche Borse Cybersecurity, Salesforce Agentforce Specialist, Cisco Modern AI, LeetCode 300+ Solved, Full Stack Developer" 
+      },
       { name: "author", content: "SaiPrasad Chindam" },
-      { property: "og:title", content: "SaiPrasad Chindam | Portfolio" },
-      { property: "og:description", content: "Software Engineer focused on cloud-native AI systems." },
+      { name: "robots", content: "index, follow" },
+      { name: "googlebot", content: "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" },
+      { property: "og:title", content: "SaiPrasad Chindam — Software Engineer & GenAI Architect" },
+      { property: "og:description", content: "Official Portfolio of SaiPrasad Chindam. Explore production-grade AI systems, cloud-native architectures, hackathon achievements, and full-stack projects." },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
+      { property: "og:url", content: "https://saiprasad-portfolio-mu.vercel.app/" },
+      { property: "og:site_name", content: "SaiPrasad Chindam Portfolio" },
+      { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@saiprasad" },
+      { name: "twitter:title", content: "SaiPrasad Chindam — Software Engineer & GenAI Architect" },
+      { name: "twitter:description", content: "Official Portfolio of SaiPrasad Chindam. Explore production-grade AI systems, cloud-native architectures, hackathon achievements, and full-stack projects." },
     ],
     links: [
       {
@@ -99,6 +112,17 @@ function RootShell({ children }: { children: React.ReactNode }) {
     <html lang="en">
       <head>
         <HeadContent />
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-22N4VNX4RE"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-22N4VNX4RE');
+            `,
+          }}
+        />
       </head>
       <body>
         {children}
